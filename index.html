@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#071a1a" />
+  <title>ISLA — The Last Shore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="game-root">
+    <canvas id="world"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <div class="brand"><div class="brand-mark">I</div><div><span class="brand-title">ISLA</span><span class="brand-sub">THE LAST SHORE</span></div></div>
+      <div class="location"><span class="location-dot"></span><div><small>LOCATION</small><strong id="location-name">Palmhaven Coast</strong></div></div>
+      <div class="top-right"><div class="weather-chip"><span id="weather-icon">☀</span><span id="weather-label">CLEAR</span></div><div class="clock"><span class="clock-icon">◷</span><span id="clock">08:24</span></div><button id="map-toggle" class="icon-button" aria-label="Toggle map">⌖</button></div>
+    </header>
+    <section class="mission-card" id="mission-card">
+      <div class="mission-kicker"><span class="eyebrow-dot"></span> FIELD JOURNAL <span class="mission-index">01 / 04</span></div>
+      <h1 id="mission-title">A signal in the green</h1>
+      <p id="mission-description">Find the old radio tower above the village. Someone may still be listening.</p>
+      <div class="mission-progress"><div class="progress-track"><i id="mission-progress"></i></div><span id="mission-distance">1.2 km</span></div>
+      <div class="mission-reward">✦ &nbsp; WAYPOINT MARKED</div>
+    </section>
+    <div class="right-rail">
+      <div class="mini-map-wrap"><div class="map-label">ISLAND CHART <span>N</span></div><canvas id="minimap" width="180" height="180"></canvas><div class="map-coords" id="coords">N 04° 18' · E 12° 06'</div></div>
+      <div class="objective-pill"><span class="objective-icon">⌖</span><span id="objective-copy">TOWER · 1.2 KM</span><span class="objective-arrow">↗</span></div>
+    </div>
+    <section class="status-panel">
+      <div class="status-head"><span>VITALS</span><span class="status-state"><i></i> STABLE</span></div>
+      <div class="stat-row"><span class="stat-icon heart">♥</span><div class="stat-copy"><div class="stat-label">HEALTH <b id="health-value">100</b></div><div class="stat-track"><i id="health-bar" class="health-fill"></i></div></div></div>
+      <div class="stat-row"><span class="stat-icon energy">ϟ</span><div class="stat-copy"><div class="stat-label">ENERGY <b id="energy-value">100</b></div><div class="stat-track"><i id="energy-bar" class="energy-fill"></i></div></div></div>
+      <div class="inventory"><div class="inventory-label">QUICK KIT</div><div class="inventory-slots"><div class="slot active"><span>✚</span><small>MEDKIT</small><b id="medkit-count">2</b></div><div class="slot"><span>◈</span><small>WATER</small><b>3</b></div><div class="slot"><span>⌁</span><small>FLARE</small><b>1</b></div></div></div>
+    </section>
+    <div class="interaction" id="interaction"><span class="keycap">E</span><span id="interaction-text">ENTER VEHICLE</span></div>
+    <div class="toast" id="toast"></div>
+    <div class="map-overlay" id="map-overlay"><div class="map-modal"><button class="map-close" id="map-close">×</button><div class="map-modal-kicker">FIELD JOURNAL / CARTOGRAPHY</div><h2>Vesper Island</h2><p>Uncharted land. Your signal is coming from the northern highlands.</p><canvas id="bigmap" width="720" height="500"></canvas><div class="map-legend"><span><i class="legend-player"></i> YOU</span><span><i class="legend-mission"></i> RADIO TOWER</span><span><i class="legend-discovery"></i> UNKNOWN</span><span class="map-hint">Press M or click to close</span></div></div></div>
+    <div class="start-overlay" id="start-overlay"><div class="start-card"><div class="start-emblem">I</div><div class="start-eyebrow">A SURVIVAL JOURNEY</div><h1>THE LAST<br><i>SHORE</i></h1><p>A place this beautiful was never meant to be empty.</p><button id="start-button">EXPLORE THE ISLAND <span>→</span></button><div class="start-controls">WASD <span>MOVE</span><b>·</b> MOUSE <span>LOOK</span><b>·</b> E <span>INTERACT</span></div></div><div class="start-bottom">VESPER ISLAND <span>—</span> DAY 01</div></div>
+    <footer class="bottom-hud"><div class="control-hint"><span class="keycap small">W A S D</span><span>MOVE</span><span class="hint-sep"></span><span class="keycap small">SHIFT</span><span>SPRINT</span><span class="hint-sep"></span><span class="keycap small">E</span><span>INTERACT</span></div><div class="island-status"><span class="signal-icon">⌁</span> NO SIGNAL <span class="hint-sep"></span> <span id="survival-day">DAY 01</span></div></footer>
+    <div class="mobile-controls" id="mobile-controls"><div class="touch-stick" id="touch-stick"><div class="stick-knob" id="stick-knob"></div></div><div class="touch-actions"><button id="touch-sprint">RUN</button><button id="touch-action">USE</button></div></div>
+    <div class="crosshair"><i></i><b></b></div>
+  </div>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
